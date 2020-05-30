@@ -1,13 +1,28 @@
-server: 
-  port: 3344 
-  
+#以下为配置环境的切换
 spring:
-  application:
-    name:  microservicecloud-config
-  cloud:
-    config:
-      server:
-        git:
-          uri: git@github.com:zzyybs/microservicecloud-config.git #GitHub上面的git仓库名字
- 
-
+  profiles:
+    active: prod
+---
+spring:
+  profiles: prod          #表示生产环境
+#tomcat具体配置
+server:
+  port: 80
+  servlet:
+    context-path: /       #表示路径
+---
+spring:
+  profiles: test          #表示测试环境
+#tomcat具体配置
+server:
+  port: 81
+  servlet:
+    context-path: /
+---
+spring:
+  profiles: asd
+#tomcat具体配置
+server:
+  port: 8088
+  servlet:
+    context-path: /jt
